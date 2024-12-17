@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen, cleanup, fireEvent } from "@testing-library/react";
+import '@testing-library/jest-dom';
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+afterEach(() => {
+    cleanup();
+})
+
+describe("test App component", () => {
+
+    test("should render dashboard component", () => {
+        render(<App/>)
+        const dashboard = screen.getByTestId("dashboard");
+        expect(dashboard).toBeInTheDocument();
+    })
+
+})
